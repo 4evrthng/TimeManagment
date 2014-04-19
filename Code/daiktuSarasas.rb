@@ -1,12 +1,21 @@
 require './daiktas'
 class DaiktuSarasas
-	attr_accessor :ID
-	daiktai = [0] 
+	#attr_accessor
+	def initialize 
+		@daiktai = [0] 
+
+	end
+
 	def idetiDaikta (daiktas)
-	daiktai[daiktai.length()] = daiktas
+		puts @daiktai
+		@daiktai[@daiktai.length()] = daiktas
+		if @daiktai[@daiktai.length()-1] == daiktas 
+			then true
+			end
 	end
 	
-	def IsimtiDaikta(id)
-	daiktai[daiktai.length()] = nil if daiktai.length()>1
+	def isimtiDaikta(pavadinimas)#?ID srsly??
+		@daiktai.delete(pavadinimas) #.delete_if {|d| d.pavadinimas == pavadinimas }
+		true
 	end
 end

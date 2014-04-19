@@ -1,8 +1,9 @@
 require './tvarkarastis'
+
 class Interfeisas
 	i=0
-	def self.meniu (klausimas,v=" ") 
-		puts "Sistema: ",klausimas
+	def self.meniu (klausimas,v = " ")
+		puts 'Sistema: ', klausimas
 		puts v
 		i = gets.to_i
 		return i;
