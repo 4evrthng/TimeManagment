@@ -6,8 +6,8 @@ class Interfeisas
 		puts 'Sistema: ', klausimas
 		puts v
 		i = gets.to_i
-		return i;
-	end
+		return i
+  end
 		tvarkarastis= Tvarkarastis.new();
 		kl = "Pasirinkite veiksma"
 		kv = [["0 Iseiti","1 Dirbt"],[" ","1 perziureti diena","2 ikelti ivyki"]]
