@@ -12,7 +12,7 @@ class Timetable
     unless temporary_event.nil? 
      raise 'Oops, doesn\'t work'
     end
-      
+    @events << Event.new(description,time,length, date, importance) 
     @events.last
   end
 
@@ -25,9 +25,5 @@ class Timetable
     end
     nil
   end
-  # def change_event_details(timef,datef,description,time,length, date, importance)
-  #   event = find_by_date_time(timef,datef)
-  #   @events.delete(event);
-  #   add_event(description,time,length, date, importance)
-  # end
+
 end

@@ -66,5 +66,10 @@ describe "Event" do
   it "shouldn't allow importance other than 'optional', 'important', 'very important', 'unknown'" do
       event = Event.new("Meeting at friday", "14:00","1", Date.new(1999,2,13), "i think maybe optional");
       event.event_importance.should == "unknown"
-    end
+  end
+
+  it "should be able to add stuff to the event" do 
+      event = Event.new("Meeting at friday", "14:00","1", Date.new(1999,2,13), "i think maybe optional");
+      event.addStuff("pen");
+  end
 end
