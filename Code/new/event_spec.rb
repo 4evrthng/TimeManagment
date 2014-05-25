@@ -1,4 +1,6 @@
 require './Event.rb'
+require './Thing.rb'
+
 
 describe "Event" do
   
@@ -67,9 +69,40 @@ describe "Event" do
       event = Event.new("Meeting at friday", "14:00","1", Date.new(1999,2,13), "i think maybe optional");
       event.event_importance.should == "unknown"
   end
+  describe "Thing Creation" do 
+    before do
+      @event =Event.new("Meeting at friday", "14:00","1", Date.new(1999,2,13), "optional");
+      @thing = @event.add_thing("pen")
+    end
 
-  it "should be able to add stuff to the event" do 
-      event = Event.new("Meeting at friday", "14:00","1", Date.new(1999,2,13), "i think maybe optional");
-      event.addStuff("pen");
+      it "should be able to add thing to the event" do 
+        @event.add_thing("pen").name.should == "pen"
+      end
+
+      it "should be able to get list of things from the event" do 
+        thing2 = @event.add_thing("pen2")
+        thing3 = @event.add_thing("pen3")
+        @event.get_things.should == [@thing,thing2,thing3]
+      end
+
+      it "should be able to remove thing from the list" do 
+        thing2 = @event.add_thing("pen2")
+        thing3 = @event.add_thing("pen3")
+        @event.remove_thing("pen2")
+        @event.get_things.should == [@thing,thing3]
+      end
+
+      it "shouldn't be able to add already added item" do 
+        thing2 = @event.add_thing("pen2")
+        thing3 = @event.add_thing("pen3")
+        thing4 = @event.add_thing("pen")
+        @event.get_things.should == [@thing,thing2,thing3]
+      end
   end
+
+  it "shouldn't be able to remove anything from an empty list" do
+   @event = Event.new("Meeting at friday", "14:00","1", Date.new(1999,2,13), "optional")
+      @event.get_things.should == [];
+  end
+ 
 end

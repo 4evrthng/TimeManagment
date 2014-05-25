@@ -1,5 +1,6 @@
 class Event
   attr_accessor:description, :time, :length, :date, :importance
+  attr_reader :things
 
 
   def initialize (description,time,length, date, importance)
@@ -9,6 +10,7 @@ class Event
     self.length         = length
     self.date           = date
     self.importance     = importance
+    @things = []
   end
 
     def event_details 
@@ -48,9 +50,38 @@ class Event
     if importance 
       @importance = importance
     end
+
     if !(@importance == "optional" || @importance == "very important" || @importance == "important") then
       @importance = "unknown"
     end
+
     @importance
+  end
+
+  def add_thing (name)
+    a = 0;
+    @things.each do |th|
+      if th.thing_name == name
+        a = 1;
+      end
+    end
+    if a == 0
+    @things << Thing.new(name)
+  end
+    @things.last
+  end
+
+  def get_things 
+    nil if @things.length == 0
+    @things
+  end
+
+  def remove_thing(name) 
+    @things.each do |th|
+      if th.thing_name == name
+        @things.delete(th)
+      end
+    end
+    @things
   end
 end

@@ -1,4 +1,4 @@
-class Stuff
+class Thing
   attr_accessor:name
 
 
@@ -6,7 +6,7 @@ class Stuff
     self.name           = name
   end
 
-    def stuff_name (name = @name)
+    def thing_name (name = @name)
       if name
         @name = name
       end
